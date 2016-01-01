@@ -13,6 +13,13 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 
 var websites = [{ name: "site 1" }, { name: "site 2" }, { name: "site 3" }, { name: "site 4" }];
 
+app.delete("/api/website/:id", function (req, res) {
+    var index = req.params.id;
+    websites.splice(index, 1);
+    res.json("websites");
+
+});
+
 app.get("/api/website", function (req, res) {
     res.json(websites);
 });
