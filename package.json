@@ -23,9 +23,9 @@
     "npm": ">= 1.0.0"
   },
   "dependencies": {
-    "body-parser": "file:node_modules\\body-parser",
+    "body-parser": "^1.14.2",
     "express": "~3.4.4",
-    "multer": "file:node_modules\\multer"
+    "multer": "^1.1.0"
   },
   "devDependencies": {},
   "bundleDependencies": [],
