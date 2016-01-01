@@ -254,46 +254,14 @@ var education = {
 };
 var jsonresume = { "bio": bio, "work": work, "eduction": education };
 
-app.post("/api/website", function (req, res) {
-    var obj = req.body;//{ firstName: "First", lastName: "Last" };
-    websites.push(obj);
-    res.json(websites);
-});
 
 
 
-app.put("/api/website/:id", function (req, res) {
-    var index = req.params.id;
-    var obj = req.body;//{ firstName: "First", lastName: "Last" };
-    websites[index] = obj;
-
-    res.json(websites);
-
-});
-
-
-
-app.delete("/api/website/:id", function (req, res) {
-    var index = req.params.id;
-    websites.splice(index, 1);
-    res.json(websites);
-
-});
-
-app.delete("/api/website/:siteID/Page/:pageIndex", function (req, res) {
-    var index = req.params.siteID;
-    websites[index].pages.splice(req.params.pageIndex,1);
-    res.json(websites);
-
-});
 
 app.get("/json", function (req, res) {
     res.json(jsonresume);
 });
 
-app.get("/api/website/:id", function (req, res) {
-    res.json(websites[req.params.id]);
-});
 
 app.use(express.static(__dirname + '/public'));
 
