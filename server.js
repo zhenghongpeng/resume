@@ -11,7 +11,36 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 
 
 
-var websites = [{ name: "site 1" }, { name: "site 2" }, { name: "site 3" }, { name: "site 4" }];
+var websites = [{
+    name: "site 1", pages: [
+                        {
+                            name: "Page 1, 1", widgets:
+                              [
+                                  { name: "Widget 1,1,1" },
+                                  { name: "Widget 1,1,2" },
+                                  { name: "Widget 1,1,3" }
+                              ]
+                        },
+                        { name: "Page 1, 2", widgets: [] },
+                        { name: "Page 1, 3", widgets: [] }
+                    ]
+                },
+                {
+                    name: "site 2", pages: [
+                          { name: "Page 2, 1", widgets: [] },
+                          { name: "Page 2, 2", widgets: [] },
+                          { name: "Page 2, 3", widgets: [] }
+                    ]
+                },
+                {
+                    name: "site 3", pages: [
+                          { name: "Page 3, 1", widgets: [] },
+                          { name: "Page 3, 2", widgets: [] },
+                          { name: "Page 3, 3", widgets: [] }
+                    ]
+                },
+                { name: "site 4" , pages: [], widgets:[] }];
+
 
 
 app.post("/api/website", function (req, res) {
@@ -36,6 +65,13 @@ app.put("/api/website/:id", function (req, res) {
 app.delete("/api/website/:id", function (req, res) {
     var index = req.params.id;
     websites.splice(index, 1);
+    res.json(websites);
+
+});
+
+app.delete("/api/website/:siteID/Page/:pageIndex", function (req, res) {
+    var index = req.params.siteID;
+    websites[index].pages.splice(req.params.pageIndex,1);
     res.json(websites);
 
 });

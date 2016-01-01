@@ -13,12 +13,24 @@ function ($scope, $http) {
         });
 
     };
+
+    $scope.removePage = function (pageIndex) {
+        $http.delete("/api/website/" + $scope.selectedindex +"/Page/"+ pageIndex)
+        .success(function (response) {
+            $scope.websites = response;
+            $scope.selectedSite.pages = response[$scope.selectedindex].pages;
+        });
+    };
     
     $scope.selectedindex = null;
+    $scope.selectedSite = null;
     $scope.select = function (index) {
 
         $scope.selectedindex = index;
+
         $scope.site = $scope.websites[index];
+        $scope.selectedSite = $scope.websites[index];
+
 
     };
     $scope.add = function (site) {

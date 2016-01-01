@@ -52,6 +52,28 @@
                </tr>
            </tbody>
        </table>
+        
+        <div ng-show="selectedSite.pages.length>0">
+            <h2>Selected Page</h2>
+            <table class="table table-striped">
+                <tbody>
+                    <tr ng-repeat="page in selectedSite.pages">
+                        <td>{{page.name}}</td>
+                        <td>
+                            <button ng-click="removePage($index)" class="btn btn-danger pull-right">
+                                <span class="glyphicon glyphicon-remove">
+
+                                </span>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+            
+        </div>
+
+
     </div>
 
 </body>
